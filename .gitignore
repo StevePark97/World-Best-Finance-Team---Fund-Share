@@ -1,0 +1,3 @@
+tools/.corpcode_cache.json
+__pycache__/
+.env
