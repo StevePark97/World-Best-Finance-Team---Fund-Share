@@ -47,4 +47,8 @@
 | `ecos.py` | 한국은행 ECOS (국내 금리·환율) | `ECOS_API_KEY` 환경변수 |
 | `prices.py` | yfinance (국·미 주가) | 불필요, 단 레이트리밋 잦음 |
 
+**원문 접근 팁:** WebFetch는 sec.gov 등 일부 도메인에서 차단될 수 있으나 Bash `curl`은 동작한다.
+SEC 원문은 `curl -A "ai-analyst-team research-bot research@example.com" <URL>`로 받는다.
+공시 목록: `https://data.sec.gov/submissions/CIK<10자리>.json`. 받은 원문은 `reports/<폴더>/sources/`에 텍스트로 저장해 재사용.
+
 도구가 실패하면 실패 사실을 리포트에 기록하고 웹검색으로 대체하되, 대체 출처를 명시한다.

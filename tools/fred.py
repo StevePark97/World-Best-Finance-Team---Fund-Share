@@ -37,7 +37,9 @@ def main():
         d, v = s[-1]
         target = d.replace(year=d.year - 1)
         prev = min(s, key=lambda x: abs((x[0] - target).days))
-        chg = f"{(v/prev[1]-1)*100:+.1f}% (YoY)" if sid == "CPIAUCSL" else f"{v-prev[1]:+.2f}"
+        gap = abs((prev[0] - target).days)
+        chg = f"{(v/prev[1]-1)*100:+.1f}%" if sid == "CPIAUCSL" else f"{v-prev[1]:+.2f}"
+        chg += f" (비교시점 {prev[0]}" + (f", ⚠ 1년 전 데이터 결측으로 {gap}일 어긋남)" if gap > 20 else ")")
         print(f"| {NAMES.get(sid, sid)} | {v:,.2f} | {d} | {prev[1]:,.2f} | {chg} | FRED {sid} |")
 
 
